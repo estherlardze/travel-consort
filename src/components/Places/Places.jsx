@@ -1,10 +1,10 @@
 import React from 'react';
-import {data} from './dummyData'
+import {data} from '../dummyData'
 
 const Places = () => {
   return (
-    <div className='mt-4'>
-      <h3 className='text-lg md:text-2xl'>Restaurants, Hotels and attractions around you</h3>
+    <div className='mt-[70px]'>
+     {/* <h3 className='text-lg md:text-2xl'>Restaurants, Hotels and attractions around you</h3>
       <p>type</p>
       <div>
         <select name="" id="" className='border-0 border-b-2 p-1 outline-none'>
@@ -22,8 +22,8 @@ const Places = () => {
 
       {data.map((item ) => {
         <h3>{item.name}</h3>
-})}
-
+})} */}
+     <h1>placed</h1>
     </div>
   )
 }

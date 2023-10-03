@@ -1,21 +1,23 @@
 import React from 'react';
-import './index.css'
-import { Header, Map, Places } from './components/index';
+import { CssBaseline, Grid } from '@material-ui/core';
+import Header from './components/Header/Header';
+import Map from './components/Map/Map';
+import Places from './components/Places/Places';
 
 const App = () => {
   return (
-    <div className='w-full'>
+    <>
+      <CssBaseline />
       <Header />
-      <div className='grid grid-cols-1 md:grid-cols-3 ps-4 gap-x-4'>
-        <div className='col-span-1'>
-         <Places />
-        </div>
-        <div className='col-span-2'>
+      <Grid container spacing={2} style={{width:'100%'}} >
+        <Grid item xs={12} md={4}>
+          <Places />
+        </Grid>
+        <Grid item xs={12} md={8}>
           <Map />
-       </div>
-     </div>
-
-    </div> 
+        </Grid>
+     </Grid>
+    </> 
    
   )
 }
