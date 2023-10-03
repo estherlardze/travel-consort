@@ -1,29 +1,45 @@
 import React from 'react';
-import {data} from '../dummyData'
+import {data} from '../dummyData';
+import useStyles from './styles';
+import PlaceDetail from '../PlaceDetail/PlaceDetail'
+import { Typography, FormControl, MenuItem, InputLabel,Select, CircularProgress, Grid } from '@material-ui/core';
 
 const Places = () => {
-  return (
-    <div className='mt-[70px]'>
-     {/* <h3 className='text-lg md:text-2xl'>Restaurants, Hotels and attractions around you</h3>
-      <p>type</p>
-      <div>
-        <select name="" id="" className='border-0 border-b-2 p-1 outline-none'>
-         <option value="restaurant">Restaurants</option>
-         <option value="restaurant">Hotels</option>
-         <option value="restaurant">Attractions</option>
-        </select>
-        <select name="" id="" className='border-0 border-b-2 p-1 ms-2 outline-none'>
-          <option value="3.0">Rating</option>
-          <option value="3.0">3.0</option>
-          <option value="4.0">4.0</option>
-          <option value="4.5">4.5</option>
-        </select>
-      </div>
 
-      {data.map((item ) => {
-        <h3>{item.name}</h3>
-})} */}
-     <h1>placed</h1>
+  const classes = useStyles();
+  const [type, setType] = React.useState('restaurant');
+  const [rating, setRating] = React.useState('');
+
+  return (
+    <div className={classes.container}>
+      <Typography variant='h5'>Restaurants, Hotels and attractions around you</Typography>
+        <FormControl className={classes.formControl}>
+          <InputLabel >Type</InputLabel>
+          <Select value={type}  onChange={(e) => setType(e.target.value)}>
+            <MenuItem value='restaurant'>Restaurants</MenuItem>
+            <MenuItem value='hotels'>Hotels</MenuItem>
+            <MenuItem value='attractions'>Attractions</MenuItem>
+        </Select>
+      </FormControl>
+
+      <FormControl  className={classes.formControl}>
+          <InputLabel >Rating</InputLabel>
+          <Select value={rating}  onChange={(e) => setRating(e.target.value)}>
+            <MenuItem value={0}>All</MenuItem>
+            <MenuItem value={3}>Above 3.0</MenuItem>
+            <MenuItem value={4.0}>Above 4.0</MenuItem>
+            <MenuItem value={4.5}>Above 4.5</MenuItem>
+        </Select>
+      </FormControl>   
+      
+      <Grid container spacing={3} className={classes.list}>
+        {data.map((place, index) => (
+          <Grid item key={index} xs={12}>
+             <PlaceDetail place={place} />
+          </Grid>
+        ))}
+      </Grid>
+       
     </div>
   )
 }

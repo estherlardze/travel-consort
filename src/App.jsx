@@ -9,7 +9,7 @@ const App = () => {
     <>
       <CssBaseline />
       <Header />
-      <Grid container spacing={2} style={{width:'100%'}} >
+      <Grid container spacing={2} style={{width:'100%', marginTop:'58px'}} >
         <Grid item xs={12} md={4}>
           <Places />
         </Grid>

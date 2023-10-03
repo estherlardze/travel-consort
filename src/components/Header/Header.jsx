@@ -13,14 +13,14 @@ const Header = () => {
   }
   
   return (
-    <AppBar position='static'>
+    <AppBar position='fixed'>
       <Toolbar className={classes.toolbar}>
-        <Typography variant='h6'  className={classes.title}>
+        <Typography variant='h5'  className={classes.title}>
           Travel Consort
         </Typography>
 
         <Box display='flex'>
-          <Typography variant='subtitle'  className={classes.title}>
+          <Typography variant='h6'  className={classes.title}>
             Explore new places
           </Typography>
 
