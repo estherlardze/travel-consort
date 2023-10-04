@@ -5,11 +5,11 @@ import { Rating } from '@material-ui/lab';
 import { LocationOnOutlinedIcon } from '@material-ui/icons/LocationOnOutlined';
 import useStyles from './styles'
 
-const Map = () => {
+const Map = ({coordinates, setCoordinates, setBounds}) => {
   const classes = useStyles();
   const isMobile = useMediaQuery('(min-width: 600px)');
-  const coordinates = {lat: 0, lng: 0};
-  console.log(import.meta.env.VITE_REACT_GOOGLE_MAPS_API_KEY)
+ 
+
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
@@ -19,10 +19,12 @@ const Map = () => {
         center={coordinates}
        margin={[50, 50, 50, 50]}
        options={''}
-       onChange={''}
-       onChildClick={''}
-       
-      >
+       onChange={(e) => {
+         //console.log(e)
+         setCoordinates({lat:e.center.lat, lng:e.center.lng})
+         setBounds({ne:e.marginBounds.ne, sw:e.marginBounds.sw})
+       }}
+  >
       </GoogleMapReact>
     </div>
     
