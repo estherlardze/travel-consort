@@ -1,15 +1,13 @@
 import axios from 'axios';
 
+const BASE_URL = 'https://travel-advisor.p.rapidapi.com'
 
-const BASE_URL = 'https://travel-advisor.p.rapidapi.com/restaurants/list-in-boundary'
-
-
-export const fetchData = async(sw, ne) => {
+export const fetchData = async(type,sw, ne) => {
     try {
-        const {data: {data}} = await axios.get(BASE_URL, {
+        const {data: {data}} = await axios.get(`${BASE_URL}/${type}/list-in-boundary`, {
           
           params: {
-            bl_latitude: sw.lat,
+            bl_latitude: sw.lat, 
             tr_latitude: ne.lat,
             bl_longitude: sw.lng,
             tr_longitude: ne.lng,
