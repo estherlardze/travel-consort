@@ -31,7 +31,7 @@ const App = () => {
       <Header />
       <Grid container spacing={2} style={{width:'100%', marginTop:'58px'}} >
         <Grid item xs={12} md={4}>
-          <Places />
+          <Places places={places}/>
         </Grid>
         <Grid item xs={12} md={8}>
           <Map coordinates={coordinates} setCoordinates={setCoordinates} setBounds={setBounds}/>

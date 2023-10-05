@@ -1,10 +1,9 @@
 import React from 'react';
-import {data} from '../dummyData';
 import useStyles from './styles';
 import PlaceDetail from '../PlaceDetail/PlaceDetail'
 import { Typography, FormControl, MenuItem, InputLabel,Select, CircularProgress, Grid } from '@material-ui/core';
 
-const Places = () => {
+const Places = ({places}) => {
 
   const classes = useStyles();
   const [type, setType] = React.useState('restaurant');
@@ -33,7 +32,7 @@ const Places = () => {
       </FormControl>   
       
       <Grid container spacing={3} className={classes.list}>
-        {data.map((place, index) => (
+        {places?.map((place, index) => (
           <Grid item key={index} xs={12}>
              <PlaceDetail place={place} />
           </Grid>
