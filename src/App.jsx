@@ -7,11 +7,11 @@ import { fetchData } from './utils/index'
 
 const App = () => {
  const [places, setPlaces] = useState([]);
- const [coordinates, setCoordinates] = useState();
+ const [coordinates, setCoordinates] = useState({});
  const [bounds, setBounds] = useState({});
  const [isloading, setIsLoading] = useState(false);
- const [type, setType] = React.useState('restaurants');
- const [rating, setRating] = React.useState('');
+ const [type, setType] = useState('restaurants');
+ const [rating, setRating] = useState(0);
  const [filteredPlaces, setFilteredPlaces] = useState([])
 
   useEffect(() => {
@@ -21,26 +21,29 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    const filteredPlaces = places.filter((place) => place.rating > rating)
+    const filteredPlaces = places?.filter((place) => place.rating > rating)
 
     setFilteredPlaces(filteredPlaces)
   }, [rating])
 
    useEffect(() =>{
-    setIsLoading(true)
-    //console.log(bounds)
+    if (bounds) {
+      setIsLoading(true);
+   
+    //console.log({bounds})
     fetchData(type, bounds.ne, bounds.sw).then((data) =>{
-       console.log(data)
+       console.log(bounds.sw)
        setPlaces(data)
        setFilteredPlaces([])
        setIsLoading(false)
     })
-}, [type, coordinates, bounds])
+  }
+}, [type, bounds])
 
   return (
     <>
       <CssBaseline />
-      <Header />
+      <Header setCoordinates={setCoordinates} />
       <Grid container spacing={2} style={{width:'100%', marginTop:'58px'}} >
         <Grid item xs={12} md={4}>
           <Places

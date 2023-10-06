@@ -2,7 +2,11 @@ import axios from 'axios';
 
 const BASE_URL = 'https://travel-advisor.p.rapidapi.com'
 
-export const fetchData = async(type,sw, ne) => {
+export const fetchData = async(type, sw, ne) => {
+    if (!sw || !ne) {
+      console.error('sw or ne is undefined');
+      return;
+    }
     try {
         const {data: {data}} = await axios.get(`${BASE_URL}/${type}/list-in-boundary`, {
           
@@ -18,7 +22,7 @@ export const fetchData = async(type,sw, ne) => {
           }
          
         });
-        
+
         return data;
     } catch (error) {
         console.error(error);
