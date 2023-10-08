@@ -55,6 +55,7 @@ const App = () => {
            setType={setType}/>
         </Grid>
         <Grid item xs={12} md={8}>
+          
           <Map 
            places={filteredPlaces ? filteredPlaces : places}
            coordinates={coordinates} 
